@@ -10,6 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^10.0.0",
+    "express-router": "0.0.1",
+    "express-routes": "^1.0.1",
     "mongoose": "^6.0.6"
   }
 }
