@@ -25,6 +25,14 @@ router.put('/createuser/:id',(request,response)=>{
         response.send(error)
     })
 })
+router.get('/users',(request,response)=>{
+    User.find().then((data)=>{
+        response.send(data)
+    }).catch((error)=>{
+        console.log(error)
+        response.send(error)
+    })
+})
 
 
 
