@@ -1,5 +1,11 @@
 const mongoose = require("mongoose");
 let userSchema = mongoose.Schema({
+  username:{
+    required:true,
+    type:String,
+    match:["[a-zA-z]",
+  "please whrie only letters"]
+  },
   email: {
     required: true,
     type: String,
