@@ -12,9 +12,7 @@ const UserSignIn = () => {
               <input type="text" name="" placeholder="Username" />
               <input type="text" name="" placeholder="email" />
               <input type="password" name="" placeholder="Password" />
-              <a classNameName="bn31 ">
-                <span classNameName="bn31span">Sign In </span>
-              </a>
+             
               <div className="col-md-12"></div>
             </div>
           </div>
