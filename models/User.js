@@ -3,12 +3,13 @@ let userSchema = mongoose.Schema({
   username:{
     required:true,
     type:String,
-    match:["[a-zA-z]",
-  "please whrie only letters"]
+   /*  match:["[a-zA-z]",
+  "please whrie only letters"] */
   },
   email: {
     required: true,
     type: String,
+    unique:true,
     match: [
       /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
       "Please fill a valid email address"

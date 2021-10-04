@@ -4,9 +4,9 @@ const app=express()
 const dotenv=require('dotenv');
 const userRoute=require('./routes/userRoute');
 const PORT=process.env.PORT||8080
-app.use(express.json());
 dotenv.config();
-app.use('/',userRoute);
+app.use(express.json());
+app.use('/user',userRoute);
  mongoose
   .connect(process.env.MONGO, {
     useNewUrlParser: true,
@@ -23,4 +23,3 @@ app.use('/',userRoute);
   }
    console.log('server is running on port '+PORT)
 })  
-//41.62.81.221
