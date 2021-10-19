@@ -14,7 +14,6 @@ const registerController = async (request, response) => {
         return response.status(400).json({ msg: "user alreadey exist" });
       } else {
         bcrypt.hash(password, 10).then((hashedPassword) => {
-          console.log(hashedPassword);
           const newUser = new User({
             username: username,
             email: email,
@@ -28,10 +27,12 @@ const registerController = async (request, response) => {
             },
             process.env.secret
           );
+
+          console.log("1", token);
           newUser
             .save()
             .then((user) => {
-              response.json({ user, token });
+              response.json({ user: user, token: token });
             })
             .catch((error) => {
               console.log(error);
@@ -40,17 +41,41 @@ const registerController = async (request, response) => {
       }
     })
     .catch((error) => {
-      console.log(error);
+      response.status(500).json({ msg: error });
     });
 };
 const loginController = async (request, response) => {
-  const { email, password } = request.body;
-  User.findOne({ email: request.body.email }).then((user) => {
-    if (!user) {
-      response.status(400).json({ msg: "you must register before" });
-    } else {
-      bcrypt.compare(password, user.password);
-    }
-  });
+  const { username, email, password } = request.body;
+  User.findOne({ email: email })
+    .then((user) => {
+      if (!user) {
+        return response.status(400).json({ msg: "you must register before" });
+      } else {
+        bcrypt
+          .compare(password, user.password)
+          .then((result) => {
+            console.log(result);
+            if (result === false) {
+              response.status(400).json({ msg: "wrong password  try again" });
+            } else {
+              var token = jwt.sign(
+                {
+                  username: user.username,
+                  email: user.email,
+                  id: user._id,
+                },
+                process.env.secret
+              );
+              response.status(500).json({ user: user, token: token });
+            }
+          })
+          .catch((error) => {
+           response.status(400).json({message:error})
+          });
+      }
+    })
+    .catch((error) => {
+      response.status(500).json({ msg: "hello" });
+    });
 };
-module.exports = { registerController };
+module.exports = { registerController, loginController };
