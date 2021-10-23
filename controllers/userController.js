@@ -7,7 +7,7 @@ const registerController = async (request, response) => {
   if (errors.errors.length !== 0) {
     return response.status(400).json({ errors });
   }
-  const { username, email, password } = request.body;
+  const { username, email,phone,adress, password } = request.body;
   User.findOne({ email: request.body.email })
     .then((user) => {
       if (user) {
@@ -17,6 +17,8 @@ const registerController = async (request, response) => {
           const newUser = new User({
             username: username,
             email: email,
+            phone:phone,
+            adress:adress,
             password: hashedPassword,
           });
           var token = jwt.sign(
@@ -27,15 +29,13 @@ const registerController = async (request, response) => {
             },
             process.env.secret
           );
-
-          console.log("1", token);
           newUser
             .save()
             .then((user) => {
               response.json({ user: user, token: token });
             })
             .catch((error) => {
-              console.log(error);
+              response.status(500).json({message:error})
             });
         });
       }
@@ -70,7 +70,7 @@ const loginController = async (request, response) => {
             }
           })
           .catch((error) => {
-           response.status(400).json({message:error})
+            response.status(400).json({ message: error });
           });
       }
     })

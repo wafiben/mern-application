@@ -8,6 +8,8 @@ router.post(
   "/register",
   body('username','invalid username').isString(),
   body("email",'invalid email').isEmail(),
+  body("phone",'invalid phone number').isLength({ min: 8 }),
+  body('username','adress').isString(),
   body("password","password must be 6 character at least").isLength({ min: 5 }),
   registerController
 );
