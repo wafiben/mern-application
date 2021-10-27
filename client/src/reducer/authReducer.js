@@ -6,18 +6,20 @@ import {
   LOGOUT,
   SET_MESSAGE,
   CLEAR_MESSAGE,
-} from "../athtentificationUser/types.js";
+} from "../actions/athtentificationUser/types.js";
 const initialState = {
-  user: { username: "", email: "", phone: "", adress: "" },
-  resgitered: false,
+  user: {},
+  loading: false,
+  errors: null,
+  token: null,
+  isAuth: false,
 };
 const authReducer = (state = initialState, action) => {
-  console.log(action);
   switch (action.type) {
     case REGISTER_SUCCESS:
-      return { ...state, user: action.payload, resgitered: true };
+      return { ...state, user: action.payload, loading: true };
     case REGISTER_FAIL:
-      return { ...state, resgitered: false };
+      return { ...state, errors: action.payload };
     default:
       return state;
   }

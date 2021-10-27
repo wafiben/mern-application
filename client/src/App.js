@@ -8,8 +8,8 @@ import UserSignIn from "./components/UserSignIn/UserSignIn";
 function App() {
   return (
     <div className="App">
-     {/*  <UserSignIn></UserSignIn> */}
-     <RegisterForm/>
+      {/*  <UserSignIn></UserSignIn>  */}
+     <RegisterForm/> 
     </div>
   );
 }
