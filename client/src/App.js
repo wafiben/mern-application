@@ -6,11 +6,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import UserSignIn from "./Components/UserSignIn/UserSignIn";
 import UserProfile from "./Components/UserProfile/UserProfile"
 import EditProfile from "./Components/EditProfile/EditProfile"
+import  RegisterForm from "./Components/regiterForm/RegisterForm"
 function App() {
   return (
     <div className="App">
-      {/*  <UserSignIn></UserSignIn>  */}
-     <UserProfile/>
+      
+     <RegisterForm/>
     </div>
   );
 }

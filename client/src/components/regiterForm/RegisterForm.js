@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { register } from "../../actions/athtentificationUser/actions";
-import React, { useState } from "react";
-import axios from "axios";
+import { registerUser } from "../../redux/actions/RgisterActions/actions";
+import React, { useState,useEffect } from "react";
 const RegisterForm = () => {
   const dispatch = useDispatch();
   const [user, setUser] = useState({
@@ -11,25 +10,25 @@ const RegisterForm = () => {
     adress: "",
     password: "",
   });
+  useEffect(()=>{
+ dispatch(registerUser())
+  },[])
   const handleChange = (event) => {
     setUser({
       ...user,
       [event.target.id]: event.target.value,
     });
-
-    console.log(user);
   };
 
-  const onSubmit = (event) => {
+  const ot = (event) => {
     event.preventDefault();
-    // handleChange(event);
-    dispatch(register(user));
+    dispatch(registerUser(user));
     setUser({ username: "", email: "", phone: "", adress: "", password: "" });
   };
 
   return (
     <div className="container" style={{ marginTop: "30px" }}>
-      <form onSubmit={onSubmit}>
+      <form /* onSubmit={ot} */>
         <div className="form-group">
           <label htmlFor="username">Username</label>
           <input
@@ -94,8 +93,7 @@ const RegisterForm = () => {
             placeholder="Password"
           />
         </div>
-
-        <button type="submit" className="btn btn-primary" value="submit">
+        <button type="submit" onClick={ot} className="btn btn-primary" value="submit">
           Submit
         </button>
       </form>
