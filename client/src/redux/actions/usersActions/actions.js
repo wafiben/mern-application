@@ -1,11 +1,6 @@
+import { GET_USERS_REQUEST, GET_USERS_SUCCESS, GET_USERS_FAIL } from "./types";
 import axios from "axios";
-import {
-  GET_USERS_REQUEST,
-  GET_USERS_SUCCESS,
-  GET_USERS_FAIL,
-} from "./userType";
-
-export const getusers = () => (dispatch) => {
+export const GetUsers = () => (dispatch) => {
   dispatch({ type: GET_USERS_REQUEST });
   axios
     .get("/users")

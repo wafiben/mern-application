@@ -10,13 +10,16 @@ import "mdb-react-ui-kit/dist/css/mdb.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
-/* import * as React from "react";
-import * as ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom"; */
+import { BrowserRouter } from "react-router-dom";
+/*  import * as React from "react";
+import * as ReactDOM from "react-dom"; */
+
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <BrowserRouter>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </BrowserRouter>,
   document.getElementById("root")
 );
 
