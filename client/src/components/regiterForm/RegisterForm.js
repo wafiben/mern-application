@@ -10,25 +10,28 @@ const RegisterForm = () => {
     adress: "",
     password: "",
   });
-  useEffect(()=>{
- dispatch(registerUser())
-  },[])
+
   const handleChange = (event) => {
     setUser({
       ...user,
       [event.target.id]: event.target.value,
     });
+    console.log(user)
   };
+ 
 
-  const ot = (event) => {
+  const onSubmit = (event) => {
     event.preventDefault();
     dispatch(registerUser(user));
     setUser({ username: "", email: "", phone: "", adress: "", password: "" });
   };
+  useEffect(()=>{
+    dispatch(registerUser(user));
+  })
 
   return (
     <div className="container" style={{ marginTop: "30px" }}>
-      <form /* onSubmit={ot} */>
+      <form  onSubmit={onSubmit} >
         <div className="form-group">
           <label htmlFor="username">Username</label>
           <input
@@ -37,8 +40,6 @@ const RegisterForm = () => {
             type="text"
             className="form-control"
             id="username"
-            name="username"
-            aria-describedby="emailHelp"
             placeholder="Enter username"
           />
           <small id="emailHelp" className="form-text text-muted">
@@ -53,7 +54,6 @@ const RegisterForm = () => {
             type="email"
             className="form-control"
             id="email"
-            name="email"
             placeholder="email"
           />
         </div>
@@ -76,7 +76,7 @@ const RegisterForm = () => {
             type="text"
             className="form-control"
             id="adress"
-            name="adress"
+            
             placeholder="adress"
           />
         </div>
@@ -89,11 +89,11 @@ const RegisterForm = () => {
             type="password"
             className="form-control"
             id="password"
-            name="password"
+           
             placeholder="Password"
           />
         </div>
-        <button type="submit" onClick={ot} className="btn btn-primary" value="submit">
+        <button type="submit"  className="btn btn-primary" value="submit">
           Submit
         </button>
       </form>

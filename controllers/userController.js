@@ -32,7 +32,7 @@ const registerController = async (request, response) => {
           newUser
             .save()
             .then((user) => {
-              response.json({ user: user, token: token });
+              response.status(200).json({ user: user, token: token });
             })
             .catch((error) => {
               response.status(500).json({message:error})
@@ -66,7 +66,7 @@ const loginController = async (request, response) => {
                 },
                 process.env.secret
               );
-              response.status(500).json({ user: user, token: token });
+              response.status(200).json({ user: user, token: token });
             }
           })
           .catch((error) => {

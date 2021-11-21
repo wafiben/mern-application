@@ -15,6 +15,9 @@ const LoginReducer = (state = initialState, action) => {
     case LOGIN_REQUEST:
       return { ...state, loading: true, isAuth: false };
     case LOGIN_SUCCESS:
+      localStorage.setItem("token",action.payload.token)
+      localStorage.setItem("isAuth",true)
+      localStorage.setItem("user",JSON.stringify(action.payload.user))
       return {
         ...state,
         user: action.payload.user,
@@ -22,6 +25,7 @@ const LoginReducer = (state = initialState, action) => {
         token: action.payload.token,
         isAuth: true,
       };
+      
     case LOGIN_FAIL:
       return {
         ...state,

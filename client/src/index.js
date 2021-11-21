@@ -15,11 +15,11 @@ import { BrowserRouter } from "react-router-dom";
 import * as ReactDOM from "react-dom"; */
 
 ReactDOM.render(
-  <BrowserRouter>
-    <Provider store={store}>
+  <Provider store={store}>
+     <BrowserRouter> 
       <App />
-    </Provider>
-  </BrowserRouter>,
+     </BrowserRouter> 
+  </Provider>,
   document.getElementById("root")
 );
 
