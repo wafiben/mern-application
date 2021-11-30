@@ -7,8 +7,7 @@ import { useDispatch,useSelector } from "react-redux";
 import { LoginUser } from "../../redux/actions/LoginActions/actions.js";
 const LoginForm = () => {
    const userIformations=useSelector(state=>state.LoginReducer) 
-   console.log(userIformations.isAuth)
-  const navigate =useNavigate();
+    const navigate =useNavigate();
   const dispatch = useDispatch();
   const [user, setUser] = useState({ email: "", password: "" });
   function HandleChange(event) {

@@ -5,9 +5,10 @@ import EditProfile from "../EditProfile/EditProfile";
 import {useNavigate} from 'react-router-dom';
 import {useEffect} from "react"
 function UserProfile() {
+  
   const navigate=useNavigate()
   const userIformations=useSelector(state=>state.LoginReducer) 
-  console.log(userIformations.user)
+  console.log(userIformations.isAuth)
    useEffect(()=>{
    if(!userIformations.isAuth){
     navigate('/login')
@@ -31,10 +32,10 @@ function UserProfile() {
                     width="150"
                   />
                   <div className="mt-3">
-                    <h4>{userIformations.user.username}</h4>
+                    <h4>{userIformations.user.username==null?null:userIformations.user.username}</h4>
                     <p className="text-secondary mb-1">Full Stack Developer</p>
                     <p className="text-muted font-size-sm">
-                      {userIformations.user.adress}
+                      {userIformations.user.adress==null?null:userIformations.user.adress}
                     </p>
                     <button className="btn btn-primary">Follow</button>
                     <button className="btn btn-outline-primary">Message</button>
@@ -50,14 +51,14 @@ function UserProfile() {
                   <div className="col-sm-3">
                     <h6 className="mb-0">Full Name</h6>
                   </div>
-                  <div className="col-sm-9 text-secondary">{userIformations.user.username}</div>
+                  <div className="col-sm-9 text-secondary">{userIformations.user.username?userIformations.user.username:null}</div>
                 </div>
                 <hr />
                 <div className="row">
                   <div className="col-sm-3">
                     <h6 className="mb-0">Email</h6>
                   </div>
-                  <div className="col-sm-9 text-secondary">{userIformations.user.email}</div>
+                  <div className="col-sm-9 text-secondary">{userIformations.user.email==null?null:userIformations.user.email}</div>
                 </div>
                 <hr />
                 <div className="row">
@@ -71,7 +72,7 @@ function UserProfile() {
                   <div className="col-sm-3">
                     <h6 className="mb-0">Mobile</h6>
                   </div>
-                  <div className="col-sm-9 text-secondary">{userIformations.user.phone}</div>
+                  <div className="col-sm-9 text-secondary">{userIformations.user.phone==null?null:userIformations.user.phone}</div>
                 </div>
                 <hr />
                 <div className="row">
@@ -79,7 +80,7 @@ function UserProfile() {
                     <h6 className="mb-0">Address</h6>
                   </div>
                   <div className="col-sm-9 text-secondary">
-                  {userIformations.user.adress}
+                  {userIformations.user.adress==null?null:userIformations.user.adress}
                   </div>
                 </div>
                 <hr />

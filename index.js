@@ -15,8 +15,8 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
-app.use('/user',userRoute);
-app.use('/post',postRoute);
+app.use('/',userRoute);
+app.use('/',postRoute);
  mongoose
   .connect(process.env.MONGO, {
     useNewUrlParser: true,

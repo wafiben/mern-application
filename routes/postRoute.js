@@ -1,8 +1,14 @@
 const mongoose = require("mongoose");
 const express = require("express");
 const User = require("../models/User");
-const{postController} =require('../controllers/postController')
+const{postPosts ,getPosts ,updatePost,deletePost} =require('../controllers/postController')
 const authMiddleware=require('../middleware/authMiddleware')
 const router = express.Router();
-router.post('/addPost',authMiddleware ,postController);
+router.post('/',authMiddleware ,postPosts);
+router.put('/:id',authMiddleware,updatePost)
+router.get('/',getPosts);
+router.delete('/:id',authMiddleware,deletePost);
+
+
+
 module.exports=router
