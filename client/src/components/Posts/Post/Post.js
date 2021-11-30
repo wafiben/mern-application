@@ -17,51 +17,7 @@ import { useDispatch } from "react-redux";
 const Post = () => {
   const classes = useStyles();
   return (
-    {/* <Card className={classes.card}>
-      <CardMedia
-        className={classes.media}
-        image={
-          post.selectedFile }
-        title={post.title}
-      />
-      <div className={classes.overlay}>
-        <Typography variant="h6">{post.creator}</Typography>
-        <Typography variant="body2">
-          {moment(post.createdAt).fromNow()}
-        </Typography>
-      </div>
-      <div className={classes.overlay2}>
-        <Button
-          style={{ color: "white" }}
-          size="small"
-          onClick={() => setCurrentId(post._id)}
-        >
-          <MoreHorizIcon fontSize="default" />
-        </Button>
-      </div>
-
-      <Typography
-        className={classes.title}
-        gutterBottom
-        variant="h5"
-        component="h2"
-      >
-        {post.title}
-      </Typography>
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          {post.descreption}
-        </Typography>
-      </CardContent>
-      <CardActions className={classes.cardActions}>
-        <Button size="small" color="primary">
-          <ThumbUpAltIcon fontSize="small" /> Like 
-        </Button>
-        <Button size="small" color="primary">
-          <DeleteIcon fontSize="small" /> Delete
-        </Button>
-      </CardActions>
-    </Card> */}
+    <h1>Post compent</h1> 
   );
 };
 

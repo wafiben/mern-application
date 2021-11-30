@@ -22,15 +22,15 @@ import {
 function App() {
   const classes = useStyles();
   const dispatch=useDispatch();
-  useEffect(()=>{
+ /*  useEffect(()=>{
    dispatch(getPosts())
-  },[dispatch])
+  },[dispatch]) */
 
   return (
-    <>
+
     <Container maxWidth="lg">
       <AppBar className={classes.appBar} position="static" color="inherit">
-        <Typography className={classes.heading} variant="h2" align="center">Memories</Typography>
+        <Typography className={classes.heading} variant="h2" align="center">home to be changed</Typography>
         <img className={classes.image} /* src={memories} */ alt="icon" height="60" />
       </AppBar>
       <Grow in>
@@ -46,18 +46,7 @@ function App() {
         </Container>
       </Grow>
     </Container>
-   {/*    <nav>
-        <Link to="/">Home</Link>
-        <Link to="/login">Login</Link>
-        <Link to="/Register">Login</Link>
-      </nav>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<LoginForm />} />
-        <Route path="/Register" element={<RegisterForm />} />
-        <Route path="/user-profile" element={<UserProfile />} />
-      </Routes> */}
-    </>
+    
   );
 }
 

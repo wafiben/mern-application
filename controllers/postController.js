@@ -2,7 +2,6 @@ const { request } = require("express");
 const User = require("../models/User");
 const post = require("../models/Post");
 const bcrypt = require("bcryptjs");
-const { Mongoose } = require("mongoose");
 const postPosts = async (request, response) => {
   const {model, descreption, price } = request.body;
   const newPost = new post({
@@ -47,4 +46,4 @@ const updatePost=async (request,response)=>{
 const deletePost=async(request,response)=>{
   const id=request.params.id
 }
-module.exports = { postPosts ,getPosts ,updatePost};
+module.exports = { postPosts ,getPosts ,updatePost,deletePost};
