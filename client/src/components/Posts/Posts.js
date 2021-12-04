@@ -10,6 +10,7 @@ const classes = useStyles();
         <>
             <h1>hello</h1>
             <Post/>
+            <Post/>
         </>
     )
 }

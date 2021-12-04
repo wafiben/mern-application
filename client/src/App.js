@@ -9,7 +9,7 @@ import { Container, AppBar, Typography, Grow, Grid } from '@material-ui/core';
 import PostForm from './components/PostForm/PostForm';
 import  Posts from './components/Posts/Posts.js';
 import useStyles from './styles';
-import { useDispatch } from "react-redux";
+import { useDispatch ,useSelector} from "react-redux";
 import { useEffect } from "react";
 import {getPosts} from './redux/actions/PostActions/actions'
 import {
@@ -22,9 +22,11 @@ import {
 function App() {
   const classes = useStyles();
   const dispatch=useDispatch();
- /*  useEffect(()=>{
+  const posts=useSelector(state=>state.PostReducer)
+  console.log(posts)
+  useEffect(()=>{
    dispatch(getPosts())
-  },[dispatch]) */
+  },[dispatch]) 
 
   return (
 

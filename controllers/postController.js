@@ -1,11 +1,11 @@
-const { request } = require("express");
+const mongoose=require('mongoose');
 const User = require("../models/User");
 const post = require("../models/Post");
 const bcrypt = require("bcryptjs");
 const postPosts = async (request, response) => {
   const {model, descreption, price } = request.body;
   const newPost = new post({
-    model: request.body,
+    model: model,
     descreption: descreption,
     price: price,
     owner: request.userId,
@@ -45,5 +45,22 @@ const updatePost=async (request,response)=>{
 }
 const deletePost=async(request,response)=>{
   const id=request.params.id
+  if(!mongoose.Type.ObjectId.isValid(id)){
+    return response.status(400).json({message:'no data with this id'})
+  }
+  else{
+    await post.findByIdAndRemove(id);
+    response.status(200).json({message:"car is removed"})
+  }
 }
-module.exports = { postPosts ,getPosts ,updatePost,deletePost};
+const likePost=async(request,response)=>{
+  const id=request.params.id
+  if(!mongoose.Type.ObjectId.isValid(id)){
+    return response.status(400).json({message:'no data with this id'})
+  }
+  else{
+    const foundedPost=await post.findById(id);
+    post.findByIdAndUpdate(id,{likeCount:foundedPost.likeCount+1},{new:true})
+  }
+}
+module.exports = { postPosts ,getPosts ,updatePost,deletePost,likePost};

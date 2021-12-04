@@ -25,5 +25,9 @@ let postSchema = mongoose.Schema({
     type: String,
     default:'http://www.snut.fr/image-de-nature/'
   },
+  likeCount: {
+    type: Number,
+    default: 0,
+},
 });
 module.exports = mongoose.model("post", postSchema);
