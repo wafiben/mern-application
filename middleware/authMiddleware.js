@@ -7,7 +7,6 @@ const authMiddelware=async (request,response,next)=>{
     }
    request.userId=verifyToken.id
      next(); 
-    console.log(verifyToken)
 
 }
 module.exports=authMiddelware;

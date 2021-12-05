@@ -1,15 +1,16 @@
 const mongoose=require('mongoose');
-const User = require("../models/User");
 const post = require("../models/Post");
-const bcrypt = require("bcryptjs");
 const postPosts = async (request, response) => {
+  const imagePath=`http://localhost:5000/uploads/${request.file.filename}`
+  console.log(imagePath)
   const {model, descreption, price } = request.body;
   const newPost = new post({
     model: model,
     descreption: descreption,
     price: price,
+    image:imagePath,
     owner: request.userId,
-  });
+  }); 
   try{
    await newPost.save();
    response.status(200).json(newPost)

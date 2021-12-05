@@ -23,7 +23,7 @@ let postSchema = mongoose.Schema({
   },
   image: {
     type: String,
-    default:'http://www.snut.fr/image-de-nature/'
+     required:true 
   },
   likeCount: {
     type: Number,
